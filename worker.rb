@@ -1,4 +1,5 @@
 require 'json'
+require 'redis'
 class Worker
 
   def initialize (name, url)
@@ -7,6 +8,7 @@ class Worker
     @h = {}
     @h['name'] = @name
     @h['url'] = @url
+    @redis = Redis.new
   end
 
   def name
@@ -18,6 +20,10 @@ class Worker
 
   def toJson ()
     @h.to_json
+  end
+
+  def save ()
+    @redis.lpush "jobList", toJson
   end
 
 end

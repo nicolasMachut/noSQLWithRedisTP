@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/noSQLWithRedis.iml" filepath="$PROJECT_DIR$/.idea/noSQLWithRedis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/noSQLWithRedis.iml" filepath="$PROJECT_DIR$/noSQLWithRedis.iml" />
     </modules>
   </component>
 </project>

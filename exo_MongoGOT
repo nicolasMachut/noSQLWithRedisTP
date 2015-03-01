@@ -1,0 +1,44 @@
+/*************************** nombre de m et de f *****************************/
+
+map = function() {
+  emit(this.gender, 1);
+};
+
+reduce = function(key, values) {
+  return Array.sum(values);
+};
+
+db.characters.mapReduce(map, reduce, {
+    out: "gender_count"
+});
+
+
+
+
+/*************************** nombre de personnes par famille *****************************/
+
+map = function() {
+  emit(this.name.split(' ')[1], 1);
+};
+
+reduce = function(key, values) {
+  return Array.sum(values);
+};
+
+db.characters.mapReduce(map, reduce, {
+    out: "family"
+});
+
+
+
+/*************************** nombre de m et de f avec aggregate *****************************/
+
+db.characters.aggregate([
+	{ $group : {_id:"$gender", total: { $sum: 1}}}
+])
+
+
+/*************************** nombre de m et de f avec aggregate *****************************/
+
+
+
